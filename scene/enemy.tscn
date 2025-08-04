@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwscv0hl5j1uv"]
+
+[ext_resource type="Texture2D" uid="uid://c5c3v5cnh3v56" path="res://assets/enemy/20.png" id="1_h08p8"]
+[ext_resource type="PackedScene" uid="uid://cie6ecf7xmlmg" path="res://scene/deathzone.tscn" id="2_f87vc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f87vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h08p8")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u16h"]
+size = Vector2(42, 46.5)
+
+[node name="Enemy1" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f87vc")
+animation = &"enemy"
+
+[node name="deathzone" parent="." instance=ExtResource("2_f87vc")]
+position = Vector2(0, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deathzone"]
+position = Vector2(0, -3.25)
+shape = SubResource("RectangleShape2D_8u16h")
